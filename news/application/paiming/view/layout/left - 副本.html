@@ -1,0 +1,135 @@
+
+<META HTTP-EQUIV="pragma" CONTENT="no-cache">
+<META HTTP-EQUIV="Cache-Control" CONTENT="no-store, must-revalidate">
+<META HTTP-EQUIV="expires" CONTENT="Wed, 26 Feb 1997 08:21:57 GMT">
+<META HTTP-EQUIV="expires" CONTENT="0">
+
+<div class="sidebar-limit">
+    <div class="sidebar-scroll-container">
+        <div class="sidebar-main link-undecorated">
+            <!-- 手风琴菜单 -->
+            <div class="ny-menu default-transition-tree-fast" id="accordion" role="tablist" aria-multiselectable="true">
+
+                <div class="panel">
+                    <div class="upper-menu-wrap" role="tab">
+                        <a href="" id="chsIndex" data-named="phoenix" class="collapsed upper-menu menu-linkable menu-icon-home">
+                            后台总览
+                        </a>
+                    </div>
+                </div>
+                {if condition="session('admin.admin_id') eq 1"}
+                <!--站点管理-->
+                <div class="panel">
+                    {if condition="$c eq media"}
+                    <div class="upper-menu-wrap" role="tab" id="serviceHeading">
+                        <a class="collapsed upper-menu menu-icon-service menu-active" role="button" data-toggle="collapse" data-parent="#accordion" href="#serviceCollapse" aria-expanded="false" aria-controls="serviceCollapse">媒体管理</a>
+                    </div>
+                    <div id="serviceCollapse" class="collapse" aria-expanded="false" style="height: 0px;" role="tabpanel" aria-labelledby="serviceHeading">
+                        <ul class="sub-menu">
+                            <li> <a href="{:url('paiming/Media/index')}" data-named="peacock">媒体列表</a> </li>
+                            <li><a href="{:url('paiming/Media/add_media')}" data-named="swan">添加媒体</a></li>
+                        </ul>
+                    </div>
+                    {else /}
+                        <div class="upper-menu-wrap" role="tab" id="serviceHeading">
+                        <a class="collapsed upper-menu menu-icon-service" role="button" data-toggle="collapse" data-parent="#accordion" href="#serviceCollapse" aria-expanded="false" aria-controls="serviceCollapse">媒体管理</a>
+                    </div>
+                    <div id="serviceCollapse" class="collapse in" aria-expanded="false" role="tabpanel" aria-labelledby="serviceHeading">
+                        <ul class="sub-menu">
+                            <li> <a href="{:url('paiming/Media/index')}" data-named="peacock">媒体列表</a> </li>
+                            <li><a href="{:url('paiming/Media/add_media')}" data-named="swan">添加媒体</a></li>
+                        </ul>
+                    </div>
+                    {/if}
+
+                    {if condition="$c eq Mediatype"}
+                    <div class="upper-menu-wrap" role="tab" id="serviceHeading">
+                        <a class="collapsed upper-menu menu-icon-service" role="button" data-toggle="collapse" data-parent="#accordion" href="#service" aria-expanded="false" aria-controls="serviceCollapse">
+                            媒体类型管理
+                        </a>
+                    </div>
+                    <div id="service" class="collapse" role="tabpanel" aria-labelledby="serviceHeading">
+                        <ul class="sub-menu ">
+                            <li><a href="{:url('paiming/Mediatype/index')}" data-named="peacock">类型列表</a></li>                          
+                            <li><a href="{:url('paiming/Mediatype/add_media_type')}" data-named="swan">添加类型</a></li>
+                        </ul>
+                    </div>
+                    {else /}
+                     <div class="upper-menu-wrap" role="tab" id="serviceHeading">
+                        <a class="collapsed upper-menu menu-icon-service" role="button" data-toggle="collapse" data-parent="#accordion" href="#service" aria-expanded="false" aria-controls="serviceCollapse">
+                            媒体类型管理
+                        </a>
+                    </div>
+                    <div id="service" class="collapse" role="tabpanel" aria-labelledby="serviceHeading">
+                        <ul class="sub-menu ">
+                            <li><a href="{:url('paiming/Mediatype/index')}" data-named="peacock">类型列表</a></li>                          
+                            <li><a href="{:url('paiming/Mediatype/add_media_type')}" data-named="swan">添加类型</a></li>
+                        </ul>
+                    </div>
+                    {/if}
+
+                    {if condition="$c eq Rule"}
+                    <div class="upper-menu-wrap" role="tab" id="serviceHeading">
+                        <a class="collapsed upper-menu menu-icon-service" role="button" data-toggle="collapse" data-parent="#accordion" href="#serviceauth" aria-expanded="false" aria-controls="serviceCollapse">
+                            权限控制</a>
+                    </div>
+                    <div id="serviceauth" class="collapse" role="tabpanel" aria-labelledby="serviceHeading">
+                        <ul class="sub-menu ">
+                            <li><a href="{:url('paiming/Rule/rule_list')}" data-named="peacock">权限管理</a></li>
+                            <li><a href="{:url('paiming/Rule/rule_group')}" data-named="swan">角色管理</a></li>
+                             <li><a href="{:url('paiming/User/index')}" data-named="swan">用户管理</a></li>                          
+                        </ul>
+                    </div>
+                    {else /}
+                    <div class="upper-menu-wrap" role="tab" id="serviceHeading">
+                        <a class="collapsed upper-menu menu-icon-service" role="button" data-toggle="collapse" data-parent="#accordion" href="#serviceauth" aria-expanded="false" aria-controls="serviceCollapse">
+                            权限控制</a>
+                    </div>
+                    <div id="serviceauth" class="collapse" role="tabpanel" aria-labelledby="serviceHeading">
+                        <ul class="sub-menu ">
+                            <li><a href="{:url('paiming/Rule/rule_list')}" data-named="peacock">权限管理</a></li>
+                            <li><a href="{:url('paiming/Rule/rule_group')}" data-named="swan">角色管理</a></li>
+                             <li><a href="{:url('paiming/User/index')}" data-named="swan">用户管理</a></li>                          
+                        </ul>
+                    </div>
+                    {/if}
+
+
+                </div>
+                {else /}
+                 <div class="panel">
+                   {foreach name="menu" item="vo"}
+                  <div class="upper-menu-wrap" role="tab" id="serviceHeading">
+                        <a class="collapsed upper-menu menu-icon-service" role="button" data-toggle="collapse" data-parent="#accordion" href="#serviceauth" aria-expanded="false" aria-controls="serviceCollapse">
+                            {$vo.title}</a>
+                    </div>
+                    <div id="serviceauth" class="collapse" role="tabpanel" aria-labelledby="serviceHeading">
+                        <ul class="sub-menu ">
+                        {foreach name="vo['children']" item="vo2"}
+                            <li><a href="{:url($vo2.name)}" data-named="peacock">{$v2.title}</a></li>
+                        
+                        {/foreach}                        
+                        </ul>
+                    </div>
+                </div>
+                {/foreach}
+                {/if}
+                <!--站点管理-->          
+            </div>
+        </div>
+    </div>
+</div>
+
+<script language="javascript">
+    //sub-menu-active
+    // $(function () {
+    //     $('.sub-menu li').on('onlick',function () {
+    //         $(this).addClass('sub-menu-active');
+    //     });
+
+    //     $('#chsIndex').on('click',function () {
+    //         $(this).addClass('menu-active');
+    //     })
+    // });
+
+</script>

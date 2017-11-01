@@ -1,0 +1,354 @@
+<style>
+    body,button, input, select,nav,ul,li,a,span,strong,textarea,h1 ,h2, h3, h4, h5, h6 ,ul,li,a{ font-family: Microsoft YaHei, "\5b8b\4f53", sans-serif !important;}
+
+</style>
+<nav id="mainnav-container">
+    <div id="mainnav">
+
+        <!--Menu-->
+        <!--================================-->
+        <div id="mainnav-menu-wrap">
+            <div class="nano">
+                <div class="nano-content">
+
+                    <!--Profile Widget-->
+                    <!--================================-->
+
+                    <div id="mainnav-profile" class="mainnav-profile">
+                        <div class="profile-wrap">
+                            <div class="pad-btm">
+                               <!--  {if condition="$Think.session.admin_cate.headpic eq ''"}
+                                <img alt="Avatar" class="img-lg img-circle img-border mar-btm" src="__STATIC__/img/profile-photos/1.png">
+
+                                {else /}
+                                <img class="img-circle img-sm img-border" src="\{$Think.session.admin_cate.headpic}"alt="Profile Picture">
+                                {/if} -->
+                            </div>
+                            <a href="#profile-nav" class="box-block collapsed" data-toggle="collapse"
+                               aria-expanded="false">
+
+                                <p class="mnp-name">{$Think.session.admin.name}</p>
+                                <span class="mnp-desc">{$Think.session.admin_cate.email}</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    {if condition="session('admin')['id'] eq 1"}
+
+                    <ul id="mainnav-menu" class="list-group">
+
+                        {if condition="$c eq 'Staff'" }
+                        <li class="active">
+                            <a href="#" aria-expanded="true">
+                                <i class="demo-psi-bar-chart"></i>
+                                <span class="menu-title">
+                                                <strong>个人中心</strong>
+                                            </span>
+                                <i class="arrow"></i>
+                            </a>
+
+                            <ul class="collapse in" aria-expanded="true">
+                                <li><a href="{:url('/staff_index')}">我的资料</a></li>
+                                <li><a href="{:url('/my_center')}">资料修改</a></li>
+                                <li><a href="{:url('/my_salary')}">我的薪资</a></li>
+                            </ul>
+                        </li>
+                        {else /}
+                        <li>
+                            <a href="#">
+                                <i class="demo-psi-bar-chart"></i>
+                                <span class="menu-title">
+                                                <strong>个人中心</strong>
+                                            </span>
+                                <i class="arrow"></i>
+                            </a>
+
+
+                            <ul class="collapse">
+                                <li><a href="{:url('/staff_index')}">我的资料</a></li>
+                                <li><a href="{:url('/my_center')}">资料修改</a></li>
+                                <li><a href="{:url('/my_salary')}">我的薪资</a></li>
+                            </ul>
+                        </li>
+                        {/if}
+
+
+                        {if condition="$c eq 'Media'" }
+                        <li class="active">
+                            <a href="#" aria-expanded="true">
+                                <i class="demo-psi-receipt-4"></i>
+                                <span class="">
+                                        <strong>媒体管理</strong>
+                                            </span>
+                                <i class="arrow"></i>
+                            </a>
+
+                            <ul class="collapse in" aria-expanded="true">
+                                <li><a href="{:url('Admin/Media/index')}" data-original-title>媒体列表</a></li>                          
+                                <li><a href="{:url('Admin/Media/add_media')}">添加媒体</a></li>
+
+                            </ul>
+                        </li>
+                        {else /}
+                        <li>
+                            <a href="#">
+                                <i class="demo-psi-receipt-4"></i>
+                                <span class="">
+                                                <strong>媒体管理</strong>
+                                            </span>
+                                <i class="arrow"></i>
+                            </a>
+
+                            <ul class="collapse ">
+                                <li><a href="{:url('Admin/Media/index')}" data-original-title>媒体列表</a></li>                          
+                                <li><a href="{:url('Admin/Media/add_media')}">添加媒体</a></li>
+
+                            </ul>
+                        </li>
+                        {/if}
+                           {if condition="$c eq 'Mediatype'" }
+                        <li class="active">
+                            <a href="#" aria-expanded="true">
+                                <i class="demo-psi-receipt-4"></i>
+                                <span class="">
+                                                <strong>媒体类型</strong>
+                                            </span>
+                                <i class="arrow"></i>
+                            </a>
+
+                            <ul class="collapse in" aria-expanded="true">
+                                <li><a href="{:url('Admin/Mediatype/index')}" data-original-title>媒体类型列表</a></li>                          
+                                 <li><a href="{:url('Admin/Mediatype/add_media_type')}">添加媒体类型</a></li>
+                            </ul>
+                        </li>
+                        {else /}
+                        <li>
+                            <a href="#">
+                                <i class="demo-psi-receipt-4"></i>
+                                <span class="">
+                                                <strong>媒体类型</strong>
+                                            </span>
+                                <i class="arrow"></i>
+                            </a>
+
+                            <ul class="collapse ">
+                                   <li><a href="{:url('Admin/Mediatype/index')}" data-original-title>媒体类型列表</a></li>                          
+                                <li><a href="{:url('Admin/Mediatype/add_media_type')}">添加媒体类型</a></li>
+
+                            </ul>
+                        </li>
+                        {/if}
+
+                     <!--    {if condition="$c eq 'Manus'"}
+                        <li class="active">
+                            <a href="#" aria-expanded="true">
+                                <i class="demo-psi-pen-5"></i>
+                                <span class="menu-title">
+                                                <strong>稿件管理</strong>
+                                            </span>
+                                <i class="arrow"></i>
+                            </a>
+
+                            <ul class="collapse in" aria-expanded="true">
+                                <li><a href="{:url('Admin/Manus/add_manus')}">发布稿件</a></li>
+                                <li><a href="{:url('Admin/Manus/index')}">全部稿件</a></li>
+                                <li><a href="{:url('Admin/Manus/index')}">待发布</a></li>
+                                <li><a href="{:url('Admin/Manus/index')}">已发布</a></li>
+                                <li><a href="{:url('Admin/Manus/index')}">待确认</a></li>
+
+                            </ul>
+                        </li>
+                        {else /}
+                        <li>
+                            <a href="#">
+                                <i class="demo-psi-pen-5"></i>
+                                <span class="menu-title">
+                                                <strong>稿件管理</strong>
+                                            </span>
+                                <i class="arrow"></i>
+                            </a>
+                            <ul class="collapse ">
+                                <li><a href="{:url('Admin/Manus/add_manus')}">发布稿件</a></li>
+                                <li><a href="{:url('Admin/Manus/index')}">全部稿件</a></li>
+                                <li><a href="{:url('Admin/Manus/index')}">待发布</a></li>
+                                <li><a href="{:url('Admin/Manus/index')}">已发布</a></li>
+                                <li><a href="{:url('Admin/Manus/index')}">待确认</a></li>
+                            </ul>
+                        </li>
+                        {/if} -->
+
+                        {if condition="$c eq 'Rule'"}
+
+                        <li class="active">
+                            <a href="#" aria-expanded="true">
+                                <i class="demo-psi-gear-2"></i>
+                                <span class="menu-title">
+                                                <strong>权限控制</strong>
+
+                                            </span>
+                                <i class="arrow"></i>
+                            </a>
+
+                            <ul class="collapse in" aria-expanded="true">
+                                <li><a href="{:url('/rule_list')}">权限管理</a></li>
+                                <li><a href="{:url('/rule_group')}">角色管理</a></li>
+                               <!--  <li><a href="{:url('/user_index')}">用户管理</a></li> -->
+                            </ul>
+                        </li>
+                        {else /}
+                        <li>
+                            <a href="#">
+                                <i class="demo-psi-gear-2"></i>
+                                <span class="menu-title">
+                                                <strong>权限控制</strong>
+
+                                            </span>
+                                <i class="arrow"></i>
+                            </a>
+
+                            <ul class="collapse">
+                                <li><a href="{:url('/rule_list')}">权限管理</a></li>
+                                <li><a href="{:url('/rule_group')}">角色管理</a></li>
+                              <!--   <li><a href="{:url('/user_index')}">用户管理</a></li> -->
+                            </ul>
+                        </li>
+                        {/if}
+                        {if condition="$c eq 'User'"}
+
+                        <li class="active">
+                            <a href="#" aria-expanded="true">
+                                <i class="demo-psi-gear-2"></i>
+                                <span class="menu-title">
+                                                <strong>用户管理</strong>
+
+                                            </span>
+                                <i class="arrow"></i>
+                            </a>
+
+                            <ul class="collapse in" aria-expanded="true">
+                                <li><a href="{:url('Admin/User/index')}">管理员列表</a></li>
+                                <li><a href="{:url('Admin/User/add_user')}">添加管理员</a></li>
+                               <!--  <li><a href="{:url('/user_index')}">用户管理</a></li> -->
+                            </ul>
+                        </li>
+                        {else /}
+                        <li>
+                            <a href="#">
+                                <i class="demo-psi-gear-2"></i>
+                                <span class="menu-title">
+                                                <strong>用户管理</strong>
+
+                                            </span>
+                                <i class="arrow"></i>
+                            </a>
+
+                            <ul class="collapse">
+                               <li><a href="{:url('Admin/User/index')}">管理员列表</a></li>
+                                <li><a href="{:url('Admin/User/add_user')}">添加管理员</a></li>
+                            </ul>
+                        </li>
+                        {/if}
+
+                        {if condition="$c eq 'Manus'"}
+
+                        <li class="active">
+                            <a href="#" aria-expanded="true">
+                                <i class="demo-psi-gear-2"></i>
+                                <span class="menu-title">
+                                                <strong>稿件管理</strong>
+
+                                            </span>
+                                <i class="arrow"></i>
+                            </a>
+
+                            <ul class="collapse in" aria-expanded="true">
+                                <li><a href="{:url('Admin/Manus/checkarticle')}">待审核列表</a></li>
+                                <li><a href="{:url('Admin/Manus/add_user')}">待发布列表</a></li>
+                               <!--  <li><a href="{:url('/user_index')}">用户管理</a></li> -->
+                            </ul>
+                        </li>
+                        {else /}
+                        <li>
+                            <a href="#">
+                                <i class="demo-psi-gear-2"></i>
+                                <span class="menu-title">
+                                                <strong>稿件管理</strong>
+
+                                            </span>
+                                <i class="arrow"></i>
+                            </a>
+
+                            <ul class="collapse">
+                                <li><a href="{:url('Admin/Manus/checkarticle')}">待审核列表</a></li>
+                                <li><a href="{:url('Admin/Manus/add_user')}">待发布列表</a></li>
+                            </ul>
+                        </li>
+                        {/if}
+                       <!--   <li >
+                            <a href="#" aria-expanded="true">
+                                <i class="demo-psi-gear-2"></i>
+                                <span class="menu-title">
+                                                <strong>基本设置</strong>
+
+                                            </span>
+                                <i class="arrow"></i>
+                            </a>
+
+                             <ul class="collapse " aria-expanded="true">
+                                <li><a href="{:url('Admin/Company/index')}">公司架构管理</a></li>
+                                <li><a href="{:url('Admin/Depart/depart_list')}">部门管理</a></li>
+                                <li><a href="{:url('Admin/Position/position_list')}">职位管理</a></li>
+                                <li><a href="{:url('Admin/Ptype/ptype_list')}">项目类型管理</a></li>
+                            </ul>
+                        </li> -->
+
+
+                        {else /}
+                        <ul id="mainnav-menu" class="list-group">
+                            {foreach name="menu" item="vo"}
+
+                            <li <?php $arr=explode('/',$vo['name']);$pcon=$arr[1];if($pcon==$c){echo 'class="active"';}?>>
+                            <a href="#" <?php $arr=explode('/',$vo['name']);$pcon=$arr[1];if($pcon==$c){echo 'aria-expanded="true"';}?> >
+                                <i class="demo-psi-split-vertical-2"></i>
+                                <span class="menu-title">
+                                            <strong>{$vo.title}</strong>
+                                            </span>
+                                <i class="arrow"></i>
+                            </a>
+
+
+                            <ul>
+                          
+                            {foreach name="vo['children']" item="vo2"}
+                            <li
+                            <?php if($name==$vo2['name']){echo 'class="active"';}?>>
+                            <a href="{:url($vo2.name)}"> {$vo2.title}
+                            </a>
+                            </li>
+                            {/foreach}
+                        </ul>
+                        </li>
+                        {/foreach}
+                    </ul>
+
+                    <div class="mainnav-widget">
+
+                        <!-- Show the button on collapsed navigation -->
+               <!--          <div class="show-small">
+                            <a href="#" data-toggle="menu-widget" data-target="#demo-wg-server">
+                                <i class="demo-pli-monitor-2"></i>
+                            </a>
+                        </div> -->
+                        <!-- Hide the content on collapsed navigation -->
+              <!--       </div> -->
+                    <!--================================-->
+                    <!--End widget-->
+                    {/if}
+                </div>
+            </div>
+        </div>
+        <!--================================-->
+        <!--End menu-->
+
+    </div>
+</nav>

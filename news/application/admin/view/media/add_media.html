@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>媒体列表</title>
+
+    {include file='layout/top' /}
+    <!--百度编辑器-->
+    <link href="__STATIC__/plugins/umeditor/themes/default/css/umeditor.css" type="text/css" rel="stylesheet">
+    <script type="text/javascript" src="__STATIC__/plugins/umeditor/third-party/jquery.min.js"></script>
+    <script type="text/javascript" src="__STATIC__/plugins/umeditor/third-party/template.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="__STATIC__/plugins/umeditor/umeditor.config.js"></script>
+    <script type="text/javascript" charset="utf-8" src="__STATIC__/plugins/umeditor/umeditor.min.js"></script>
+    <script type="text/javascript" src="__STATIC__/plugins/umeditor/lang/zh-cn/zh-cn.js"></script>
+</head>
+
+<!--TIPS-->
+<!--You may remove all ID or Class names which contain "demo-", they are only used for demonstration. -->
+<body>
+    <div id="container" class="effect aside-float aside-bright mainnav-lg">
+        
+        <!--NAVBAR-->
+        <!--===================================================-->
+    {include file='layout/header' /}  
+        <!--===================================================-->
+        <!--END NAVBAR-->
+
+        <div class="boxed">
+
+            <!--CONTENT CONTAINER-->
+            <!--===================================================-->
+            <div id="content-container">
+                
+                <!--Page Title-->
+                <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+                <div id="page-title">
+                    <!-- <h1 class="page-header text-overflow">Collapsed Navigation</h1> -->
+
+                    <!--Searchbox-->
+                    <!-- <div class="searchbox">
+                        <div class="input-group custom-search-form">
+                            <input type="text" class="form-control" placeholder="Search..">
+                            <span class="input-group-btn">
+                                <button class="text-muted" type="button"><i class="demo-pli-magnifi-glass"></i></button>
+                            </span>
+                        </div>
+                    </div> -->
+                </div>
+                <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+                <!--End page title-->
+
+
+                <!--Breadcrumb-->
+                <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+                <ol class="breadcrumb">
+                    <li><a href="#">首页</a></li>
+                    <li><a href="#">媒体管理</a></li>
+                    <li class="active">添加</li>
+                </ol>
+                <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+               
+                <div class="col-sm-12 table-toolbar-right">
+                        <div class="form-group">
+
+
+
+                        </div>
+
+                    </div>
+                <div class="panel" style="margin-left:15px;margin-top:65px;">
+                    <div class="panel-body"  style="margin-top:15px" >
+                        <form id="demo-bv-accordion" class="form-horizontal" method="post">
+
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label" for="demo-hor-inputemail">媒体名称</label>
+                                <div class="col-sm-9">
+                                    <input type="text" id="demo-hor-inputemail" class="form-control" name="title" placeholder="凤凰网-宁夏银川" required="required">
+                                </div>
+                            </div>
+                            {foreach name='info' id='v'}
+                              <div class="form-group">
+                                <label class="col-sm-3 control-label" for="demo-hor-inputemail">{$v.title}</label>
+                                <div class="col-sm-9">
+                                    <select name="media_id{$v['id']}" id="" class="form-control">
+                                    {foreach name="data" id="vv"} 
+                                           
+                                        {if condition="$v['id'] eq $vv['pid'] "}                                          
+                                            <option value="{$vv['id']}">{$vv['title']}</option>
+                                        {/if}
+                                    {/foreach}
+                                          
+                                    </select>
+                                   <!--  <input type="text" id="demo-hor-inputemail" class="form-control" name="title"
+                                           required="required"> -->
+                                </div>
+                            </div>
+                            {/foreach}
+
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label" for="demo-hor-inputemail">成本价</label>
+                                <div class="col-sm-9">
+                                    <input type="text" id="demo-hor-inputemail" class="form-control" name="cost_price"  required="required">
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label" for="demo-hor-inputemail">指导价</label>
+                                <div class="col-sm-9">
+                                    <input type="text" id="demo-hor-inputemail" class="form-control" name="guide_price"
+                                           required="required">
+                                </div>
+                            </div>
+
+                              <div class="form-group">
+                                <label class="col-sm-3 control-label" for="demo-hor-inputemail">地区</label>
+                                <div class="col-sm-9">
+                                    <select name="prov" id="" class="form-control">
+                                    {foreach name="province" id="v"}                                                                           
+                                        <option value="{$v['id']}">{$v['name']}</option>                                    
+                                    {/foreach}                                         
+                                    </select>
+
+                                </div>
+                            </div>
+                 
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label" for="demo-hor-inputemail">案例</label>
+                                <div class="col-sm-9">
+                                    <input type="text" id="demo-hor-inputemail" class="form-control" name="case" placeholder="http://www.izhihuo.com" required="required">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label" for="demo-hor-inputemail">备注</label>
+                                <div class="col-sm-9">
+                                   <!--  <textarea name="remark" id="" cols="30" rows="10" class="form-control"></textarea> -->
+                                   <!--   <div id="demo-summernote" name="remark">
+                                        <h4><span style="color: rgb(206, 198, 206); font-family: inherit; line-height: 1.1;" name="remark">Please, write text here!</span><br></h4><h4><font color="#9c9c94"></font></h4>
+                                    </div> -->
+                                     <script type="text/plain" id="myEditor" style="width:800px;height:240px;">
+                                        <p>这里是输入提示</p>
+                                    </script>
+                                </div>
+                            </div>
+                             <div class="form-group">
+                                <label class="col-sm-3 control-label" for="demo-hor-inputemail">管理员备注</label>
+                                <div class="col-sm-9">
+                                    <input type="text" id="demo-hor-inputemail" class="form-control" name="admin_remark"  placeholder="" required="required">
+                                </div>
+                            </div>
+                           
+                                         
+                            
+                          <!--   <div class="form-group pad-ver">
+                                <label class="col-md-3 control-label">状态</label>
+                                <div class="col-md-9">
+                                    <div class="radio">
+                                        <!-- Inline radio buttons -->
+                              <!--           <input id="demo-inline-form-radio-1" class="magic-radio" type="radio" checked="checked"  name="status" value="1" >
+                                        <label for="demo-inline-form-radio-1">显示</label>
+                                        <input id="demo-inline-form-radio-0"  class="magic-radio" type="radio"  name="status" value="0" >
+                                        <label for="demo-inline-form-radio-0">隐藏</label>
+                                    </div>
+                                </div>
+                            </div> --> 
+
+                            <div class="panel-footer text-right">
+                                 <div class="form-group">
+                                    <div class="col-lg-7 col-lg-offset-3">
+                                        <button type="submit" class="btn btn-primary"  >提交</button>
+                                    </div>
+                                </div>
+                               <!--  <button class="btn btn-success" type="submit">提交</button> -->
+                            </div>
+                        </form>
+                    </div>
+                    <!--===================================================-->
+                    <!-- End Foo Table - Add & Remove Rows -->
+
+                </div>
+            </div>
+ 
+                    {include file="layout/left" /}
+
+        </div>
+
+        
+
+        <!-- FOOTER -->
+        <!--===================================================-->
+        {include file="layout/footer" /}
+        <!--===================================================-->
+        <!-- END FOOTER -->
+
+
+        <!-- SCROLL PAGE BUTTON -->
+        <!--===================================================-->
+        <button class="scroll-top btn">
+            <i class="pci-chevron chevron-up"></i>
+        </button>
+        <!--===================================================-->
+
+
+
+    </div>
+    <!--===================================================-->
+    <!-- END OF CONTAINER -->
+
+
+    
+        <!-- SETTINGS - DEMO PURPOSE ONLY -->
+    <!-- END SETTINGS -->
+
+
+</body>
+<script type="text/javascript">
+    //实例化编辑器
+    var um = UM.getEditor('myEditor');
+    
+</script>
+</html>

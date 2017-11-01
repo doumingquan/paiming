@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html><head lang="en"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <title>排名啦搜索营销系统管理平台</title>
+   {include file="layout/cssjs" /}
+
+    <style>
+        .userServiceList {
+            height: 320px;
+            width: 620px;
+            background-color: #F7F7F7;
+            margin-top: 14px;
+            padding: 10px 5px;
+            font-size: 12px;
+            line-height: 2em;
+        }
+    </style>
+</head>
+<body ><div class="" style="display: none; position: absolute;"><div class="aui_outer"><table class="aui_border"><tbody><tr><td class="aui_nw"></td><td class="aui_n"></td><td class="aui_ne"></td></tr><tr><td class="aui_w"></td><td class="aui_c"><div class="aui_inner"><table class="aui_dialog"><tbody><tr><td colspan="2" class="aui_header"><div class="aui_titleBar"><div class="aui_title" style="cursor: move;"></div><a class="aui_close" href="javascript:/* www.xiaofuwulala.com */;">×</a></div></td></tr><tr><td class="aui_icon" style="display: none;"><div class="aui_iconBg" style="background: none;"></div></td><td class="aui_main" style="width: auto; height: auto;"><div class="aui_content" style="padding: 20px 25px;"></div></td></tr><tr><td colspan="2" class="aui_footer"><div class="aui_buttons" style="display: none;"></div></td></tr></tbody></table></div></td><td class="aui_e"></td></tr><tr><td class="aui_sw"></td><td class="aui_s"></td><td class="aui_se" style="cursor: se-resize;"></td></tr></tbody></table></div></div>
+<!-- header -->
+{include file="layout/top" /}
+<!-- header end-->
+<!-- menu -->
+{include file="layout/left" /}
+<!-- menu end -->
+<div class="ny-main">
+    <div class="crumb-container" data-nav="peacock" id="crumbNavContainer"><ol class="breadcrumb ny-crumb">
+        <li><a href="/coo.php" class="crumb-home">商户中心</a></li>
+        <!-- 一级目录 -->
+        <li><a>媒体管理</a></li>
+
+        <!-- 二级目录（部分模块没有二级目录） -->
+        <li>
+            <a>
+                媒体列表
+            </a>
+        </li>
+    </ol></div>
+    <div id="contentBox"><div class="ny-panel">
+        <div class="ny-panel-heading">
+            <div class="ny-panel-title">媒体列表</div>
+        </div>
+
+        <form method="post">
+            <div class="effectkeyfind">
+                <input type="hidden" name="c" value="web">
+                <input type="hidden" name="a" value="index">
+                媒体名称:
+                        <input type="text" name="title" placeholder="" id="demo-inline-inputmail" class="ny-btn btn-primary btn-reverse secretary-feedback">
+               <!--  <input name="title" type="text" class="ny-btn btn-primary btn-reverse secretary-feedback" placeholder="项目名/网址" value="{$Think.get.title}"> -->
+                收录类型:
+                        <select name="in_type_id" id="demo-inline-inputpass1" class="ny-btn btn-primary btn-reverse secretary-feedback">
+                            <option value="">全部</option>
+                           {foreach name="souinfo" id="v"}
+                            <option value="{$v['id']}" >{$v['title']}</option>
+                            {/foreach}
+                        </select>
+
+                频道类型:
+                        <select name="ch_type_id" id="demo-inline-inputpass2" class="ny-btn btn-primary btn-reverse secretary-feedback">
+                            <option value="">全部</option>
+                            {foreach name="pinfo" id="v"}
+                            <option value="{$v['id']}" >{$v['title']}</option>
+                            {/foreach}
+                           
+                        </select>
+
+                媒体类型:
+                        <select name="media_type_id" id="demo-inline-inputpass3" class="ny-btn btn-primary btn-reverse secretary-feedback">
+                            <option value="">全部</option>
+                            {foreach name="mtinfo" id="v"}
+                            <option value="{$v['id']}">{$v['title']}</option>
+                            {/foreach}    
+                        </select>
+                媒体来源:
+                        <select name="media_from_id" id="demo-inline-inputpass4" class="ny-btn btn-primary btn-reverse secretary-feedback">
+                            <option value="">全部</option>
+                            {foreach name="mfinfo" id="v"}
+                            <option value="{$v['id']}">{$v['title']}</option>
+                            {/foreach}
+                            
+                        </select>
+                门户类型:
+                        <select name="gate_id" id="demo-inline-inputpass5" class="ny-btn btn-primary btn-reverse secretary-feedback">
+                            <option value="">全部</option>
+                            {foreach name="minfo" id="v"}
+                           <option value="{$v['id']}" >{$v['title']}</option>
+                           {/foreach}
+                            
+                        </select>
+                地区:
+                        <select name="province" id="demo-inline-inputpass" class="ny-btn btn-primary btn-reverse secretary-feedback">
+                            <option value="">全部</option>
+                           {foreach name="province" id="v"}
+                           <option value="{$v['id']}">{$v['name']}</option>
+                           {/foreach}
+                        </select>
+
+               <!--  <select name="user_id" class="ny-btn btn-primary btn-reverse secretary-feedback">
+                    <option value="">--选择客户--</option>
+                    <foreach name="usersList" key="k" item="vo">
+                        <eq name="vo['id']" value="$Think.get.user_id">
+                            <option value="{$vo.id}" selected>{$vo.realname}</option>
+                            <else/>
+                            <option value="{$vo.id}">{$vo.realname}</option>
+                        </eq>
+                    </foreach>
+                </select>
+
+
+                <select name="sales_id" class="ny-btn btn-primary btn-reverse secretary-feedback">
+                    <option value="">--选择经纪人--</option>
+                    <foreach name="userSalesList" key="k" item="vo">
+                        <eq name="vo['id']" value="$Think.get.sales_id">
+                            <option value="{$vo.id}" selected>{$vo.name}</option>
+                            <else/>
+                            <option value="{$vo.id}">{$vo.name}</option>
+                        </eq>
+                    </foreach>
+                </select> -->
+
+
+             <!--    <input type="submit" name="button" id="button" value="查询" class="ny-btn btn-primary connect-secretary">
+
+                <input type="button" onclick="window.location.href='/coo.php?c=web'" name="button" id="button" value="全部列表"  class="ny-btn btn-primary btn-reverse secretary-feedback">
+
+                <input style=" margin-left: 30px;" type="button" name="button" id="chsAdd" value="添加媒体" class="ny-btn btn-strong btn-operate-add"> -->
+                    <input type="submit" value="搜索"  class="btn btn-primary">
+                    <span onclick="daochu()" class="btn btn-primary">导出数据</span>
+            </div>
+        </form>
+                <script>
+                    function daochu(){
+                        var title = $("input[name=title]").val();//alert(title);
+                        //var username = $("input[name=user]").val();//alert(username);
+                        var in_type_id = $('#demo-inline-inputpass1 option:selected').val(); //alert(in_type_id)       //收录类型                      
+                        var ch_type_id = $('#demo-inline-inputpass2 option:selected').val(); //alert(ch_type_id)       //频道类型                      
+                        var media_type_id = $('#demo-inline-inputpass3 option:selected').val(); //alert(media_type_id)       //媒体类型                      
+                        var media_from_id = $('#demo-inline-inputpass4 option:selected').val(); //alert(media_from_id)       //媒体来源类型                      
+                        var gate_id = $('#demo-inline-inputpass5 option:selected').val(); //alert(gate_id)       //门户类型                      
+                        var province = $('#demo-inline-inputpass option:selected').val(); //alert(province)       //省                      
+                        window.location.href="<?php echo url('Media/export');?>"+'?title='+title+'&in_type_id='+in_type_id+'&ch_type_id='+ch_type_id+'&media_type_id='+media_type_id+'&media_from_id='+media_from_id+'&gate_id='+gate_id+'&prov='+province;
+
+
+                    }                                       
+                </script>
+
+        <div class="ny-panel-body">
+         
+            <table class="ny-table margin-bottom-20" data-nonedata_text="">
+                <thead>
+                <tr>
+                    <th>媒体名称</th>
+                    <th>收录类型</th>
+                  <!--   <th>收录效果</th> -->
+                    <th>媒体类型</th>
+                    <th>媒体来源</th>
+                    <th>频道类型</th>
+                    <th>地区</th>
+                    <th>门户类型</th>
+                    <th>成本价</th>
+                    <th>指导价</th>
+                    <th>案例</th>
+                    <th>备注</th>
+                  <!--   <th>操作</th> -->
+                </tr>
+                </thead>
+                <tbody>
+         {foreach name="info" id="v"}
+                <tr >                    
+                    <td>{$v['title']}</td>
+                    <td>{$v['in_type_id']}</td>
+                  <!--   <td>{$v['in_effect_id']}</td> -->
+                    <td>{$v['media_type_id']}</td>
+                    <td>{$v['media_from_id']}</td>
+                    <td>{$v['ch_type_id']}</td>
+                    <td>{$v['prov']}</td>
+                    <td>{$v['gate_id']}</td>
+                    <td>{$v['cost_price']}</td>
+                    <td><a href="javascript:;" mediaId="{$v['id']}" media_price="{$v['guide_price']}"  onclick="edit(this)"><button class="btn btn-primary">{$v['guide_price']}</button></a></td>
+                    <td>{$v['case']}</td>
+                    <td>{$v['remark']}</td>
+               <!--      <td>
+                        <a  href="{:url('paiming/media/edit_media',array('id'=>$v['id']))}" "><button class="btn btn-primary">修改</button></a>
+                        <a href="javascript:if(confirm('确定删除？'))location='{:url('paiming/media/delete',array('id'=>$v['id']))}'"><button class="btn btn-danger">删除</button></a>
+                    </td> -->
+                </tr>
+                {/foreach}
+                </tbody>
+            </table>
+             {$info->render()}
+        </div>
+    </div></div>
+</div>
+<div class="modal fade" id="thinkright-edit" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+                <h4 class="modal-title" id="myModalLabel">
+                    修改媒体价格
+                </h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal" action="{:url('paiming/media/edit_price')}" method="post">
+                <input type="hidden" name="id" >
+                    <div class="panel-body">
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label" for="demo-hor-inputemail">修改前的价格</label>
+                            <div class="col-sm-9">                             
+                                <input type="text" id="demo-hor-inputemail" class="form-control" name="cancel_price"
+                                       required="required" readonly="readonly">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label" for="demo-hor-inputemail">修改后的价格</label>
+                            <div class="col-sm-9">                             
+                                <input type="text" id="demo-hor-inputemail" class="form-control" name="price"
+                                       required="required">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-footer text-right">
+                        <button class="btn btn-success" type="submit">修改</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- footer -->
+{include file="layout/foot" /}
+
+<!-- footer end -->
+<!-- 快捷feedback提示框 -->
+<div class="ui-feedback-layout" id="nyFeedback">
+    <div class="ui-feedback ui-feedback-success">
+        <div class="ui-feedback-icon"></div>
+        <div class="ui-feedback-text">
+            操作成功
+        </div>
+        <span class="ui-feedback-close">×</span>
+    </div>
+</div>
+<!-- 普通提示框，来自 Bootstrap 的 Small modal -->
+<div class="modal fade nytips-modal" tabindex="-1" role="dialog" id="nyTips">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                <h4 class="modal-title">消息</h4>
+            </div>
+            <div class="modal-body">
+                <!-- 主要内容 -->
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 面包屑导航模板 -->
+<script type="text/html" id="crumbNavTpl">
+    <ol class="breadcrumb ny-crumb">
+        <li><a href="" class="crumb-home">商户中心</a></li>
+        <!-- 一级目录 -->
+        <li><a>{{upperMenuText}}</a></li>
+        {if subMenuText}
+        <!-- 二级目录（部分模块没有二级目录） -->
+        <li>
+            <a {{if subMenuLink}}href="{{subMenuLink}}"{{/if}}>
+            {{subMenuText}}
+            </a>
+        </li>
+        {/if}
+        {if insideTitle}
+        <!-- 详情页面 -->
+        <li>
+            <a>{{insideTitle}}</a>
+        </li>
+        {/if}
+    </ol>
+</script>
+<script type="text/javascript">
+
+    // 添加子菜单
+    function add_child(obj) {
+        var ruleId = $(obj).attr('ruleId');
+        $("input[name='pid']").val(ruleId);
+        $("input[name='title']").val('');
+        $("input[name='name']").val('');
+        $("input:radio[name='show']").val('');
+        $('#thinkright-add').modal('show');
+    }
+
+    // 修改指导价菜单
+    function edit(obj) {
+        var mediaId = $(obj).attr('mediaId');//媒体id    //alert(mediaId);
+        var mediaprice = $(obj).attr('media_price');//媒体id   //alert(mediaprice);
+
+        $("input[name='cancel_price']").val(mediaprice);
+        $("input[name='id']").val(mediaId);
+    //     $("input:radio[name='show']").val(ruleshow);
+        $('#thinkright-edit').modal('show');
+    }
+</script>
+
+
+<script>var nyData = {"pager":{"page":0,"pageSize":10,"total":0},"filter":{"searchType":0,"searchKey":"","orderType":"desc","orderName":"id"},"services":{"list":[]},"common":{"userID":72838,"userName":"\u8D75\u9633","userMobile":"138****5922","sendCountDown":0,"unReadTotal":0,"backUrl":"http:\/\/console.fuwulala.com\/user\/feedback\/","domain":{"main":"http:\/\/www.fuwulala.com","static":"http:\/\/static.fuwulala.com","console":"http:\/\/console.fuwulala.com"}}};</script>
+
+
+<div style="display: none; position: fixed; left: 0px; top: 0px; width: 100%; height: 100%; cursor: move; opacity: 0; background: rgb(255, 255, 255);"></div></body></html>
